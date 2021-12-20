@@ -28,15 +28,17 @@ public class Playercontroller : MonoBehaviour
     {
 		if (Stop.StopMoment())
 		{
-			if (jumpCount<=1)
+			if (jumpCount>=2)
 			{
-                if (Input.GetKeyDown("space"))
-		        {
-                    Jump_getkey();
-                    jumpCount++;
-		        }
+                return;
 			}
-		}
+
+            if (Input.GetKeyDown("space"))
+            {
+                Jump_getkey();
+                jumpCount++;
+            }
+        }
 		
     }
 

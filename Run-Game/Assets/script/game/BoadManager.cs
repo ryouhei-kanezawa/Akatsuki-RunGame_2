@@ -5,45 +5,64 @@ using UnityEngine;
 public class BoadManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] firld;
+    private GameObject[] field;
     [SerializeField]
     private GameObject[] item;
     [SerializeField]
     private float interval = 2f;
     [SerializeField]
-    private float cval = 1.5f;
+    private GameObject positionItem;
+    [SerializeField]
+    private GameObject positionSlope;
     [SerializeField]
     private TimeStart Stop;
 
     private float nextSpawnTime = 0;
-    private float nextSpawnItem = 0;
     private int Rnum = 0;
     private int Cnum = 0;
+    private Vector3 slopePos;
+    private Vector3 itemPos;
 
-    void Update()
+	private void Start()
+	{
+        itemPos = positionItem.transform.position;
+        slopePos = positionSlope.transform.position;
+    }
+
+	void Update()
     {
         if (nextSpawnTime < Time.timeSinceLevelLoad)
         {
             nextSpawnTime = Time.timeSinceLevelLoad + interval;
             LocalInstantate();
         }
-
-        if (nextSpawnItem < Time.timeSinceLevelLoad&&Stop.StopMoment())
-        {
-            nextSpawnItem = Time.timeSinceLevelLoad + cval;
-            ItemInstantate();
-        }
     }
     private void LocalInstantate()
     {
-        Rnum = Random.Range(0, firld.Length);
-        GameObject opt = (GameObject)GameObject.Instantiate(firld[Rnum]);
-    }
+        Rnum = Random.Range(0, field.Length);
+        GameObject opt = (GameObject)GameObject.Instantiate(field[Rnum]);
 
-    private void ItemInstantate()
-	{
-        Cnum = Random.Range(0, item.Length);
-        GameObject obj = (GameObject)GameObject.Instantiate(item[Cnum]);
+		if (Stop.StopMoment())
+		{
+            GameObject obj;
+
+            switch (Rnum)
+			{
+                case 1: //穴付き床
+                    Cnum = Random.Range(0, 1);
+                    obj = (GameObject)GameObject.Instantiate(item[Cnum], slopePos, Quaternion.identity);
+                    break;
+                case 2: //スロープ
+                    Cnum = Random.Range(0, item.Length);
+                    obj = (GameObject)GameObject.Instantiate(item[Cnum],slopePos, Quaternion.identity);
+                    break;
+
+				default://普通の床
+			        Cnum = Random.Range(0, item.Length);
+                    obj = (GameObject)GameObject.Instantiate(item[Cnum], itemPos, Quaternion.identity);
+					break;
+			}
+		}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
