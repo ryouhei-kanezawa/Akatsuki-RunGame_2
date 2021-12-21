@@ -1294,6 +1294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   over: {fileID: 3766884944493057716, guid: 78af1664a3117d949953185e5b470cb4, type: 3}
   _coin: {fileID: 1359310021}
+  canvas: {fileID: 992594423}
 --- !u!4 &1206416323
 Transform:
   m_ObjectHideFlags: 0

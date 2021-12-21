@@ -9,12 +9,17 @@ public class GameOver : MonoBehaviour
     private GameObject over;
     [SerializeField]
     private CoinSet _coin;
+    [SerializeField]
+    private GameObject canvas;          //Instantiate‚·‚éCanvas
+
+    private Transform canvasTran;
 
     public void Overset()
 	{
         Time.timeScale = 0;
 
         _coin.StopSwich(false);
-        GameObject game = Instantiate(over);
-	}
+        GameObject game = Instantiate(over, canvasTran, false);
+        game.transform.SetParent(canvas.transform, false);
+    }
 }
