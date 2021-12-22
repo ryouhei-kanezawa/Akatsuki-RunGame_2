@@ -52,6 +52,7 @@ public class BoadManager : MonoBehaviour
                     Cnum = Random.Range(0, 1);
                     obj = (GameObject)GameObject.Instantiate(item[Cnum], slopePos, Quaternion.identity);
                     break;
+
                 case 2: //スロープ
                     Cnum = Random.Range(0, item.Length);
                     obj = (GameObject)GameObject.Instantiate(item[Cnum],slopePos, Quaternion.identity);

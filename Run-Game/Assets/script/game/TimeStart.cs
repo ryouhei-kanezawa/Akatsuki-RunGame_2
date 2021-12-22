@@ -6,7 +6,12 @@ public class TimeStart : MonoBehaviour
 {
     private bool active = true;
 
-    public bool StopMoment()
+	private void Start()
+	{
+        Time.timeScale = 1;
+	}
+
+	public bool StopMoment()
 	{
             return active;
 	}

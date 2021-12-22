@@ -17,6 +17,8 @@ public class CoinSet : MonoBehaviour
     private bool swich = true;
     private int coinScore;
     private int kyoriScore;
+    private int Maxcoin = 0;
+    private int MaxScore = 0;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class CoinSet : MonoBehaviour
 			if (swich)
 			{
                 kyoriScore += score;
+                MaxScore = kyoriScore;
 			}
         }
 
@@ -43,8 +46,15 @@ public class CoinSet : MonoBehaviour
     public void CoinUpdate()
 	{
         coinScore++;
+        Maxcoin = coinScore;
 
         coin.text = coinScore.ToString();
+	}
+
+    public void TextUpdate(TextMeshProUGUI coinT,TextMeshProUGUI scoreT)
+	{
+        coinT.text = "coin:" + Maxcoin;
+        scoreT.text = "score:" + MaxScore;
 	}
 
     public void StopSwich(bool set)
