@@ -8,7 +8,7 @@ public class PaseUI : MonoBehaviour
     [SerializeField]
     private Button Pause;               //ポーズ画面を呼び出すボタン
     [SerializeField]
-    private CoinSet _coin;
+    private ScoreManager _score;
 
     /*
     [SerializeField]
@@ -35,7 +35,7 @@ public class PaseUI : MonoBehaviour
 
             Time.timeScale = 0;
             check = false;
-            _coin.StopSwich(false);
+            _score.StopSwich(false);
         }
         else
         {
@@ -43,7 +43,7 @@ public class PaseUI : MonoBehaviour
 
             Time.timeScale = 1.0f;
             check = true;
-            _coin.StopSwich(true);
+            _score.StopSwich(true);
         }
     }
 }

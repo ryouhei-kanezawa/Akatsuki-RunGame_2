@@ -70,14 +70,4 @@ public class BoadManager : MonoBehaviour
     {
         Destroy(collision.gameObject);
     }
-
-	public void CleanBoadObject()
-    {
-        GameObject[] boads = GameObject.FindGameObjectsWithTag("field");
-
-        foreach(var VARIABLE in boads)
-        {
-            Destroy(VARIABLE);
-        }
-    }
 }

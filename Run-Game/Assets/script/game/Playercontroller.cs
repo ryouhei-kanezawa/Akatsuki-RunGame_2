@@ -9,7 +9,7 @@ public class Playercontroller : MonoBehaviour
     [SerializeField]
     private float junmp = 20.0f;
     [SerializeField]
-    private CoinSet _coin;
+    private ScoreManager _score;
     [SerializeField]
     private GameOver _orver;
     [SerializeField]
@@ -52,7 +52,7 @@ public class Playercontroller : MonoBehaviour
         if (collision.gameObject.CompareTag("coin"))
         {
             Debug.Log("coinSet");
-            _coin.CoinUpdate();
+            _score.CoinUpdate();
 
             Destroy(collision.gameObject);
         }
