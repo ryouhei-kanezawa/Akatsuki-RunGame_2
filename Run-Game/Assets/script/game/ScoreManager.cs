@@ -18,6 +18,22 @@ public class ScoreManager : MonoBehaviour
     private int coinScore;
     private int kyoriScore;
 
+    public int CoinScore
+	{
+		get
+		{
+            return coinScore;
+		}
+	}
+
+    public int KyoriScore
+	{
+		get
+		{
+            return kyoriScore;
+		}
+	}
+
     void Start()
     {
         coinScore = 0;
@@ -45,12 +61,6 @@ public class ScoreManager : MonoBehaviour
         coinScore++;
 
         coin.text = coinScore.ToString();
-	}
-
-    public void TextUpdate(TextMeshProUGUI coinT,TextMeshProUGUI scoreT)
-	{
-        coinT.text = "coin:" + coinScore;
-        scoreT.text = "score:" + kyoriScore;
 	}
 
     public void StopSwich(bool set)

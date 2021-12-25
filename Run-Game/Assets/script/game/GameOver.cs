@@ -16,16 +16,28 @@ public class GameOver : MonoBehaviour
     private TextMeshProUGUI coin;
     private Transform canvasTran;
 
-    public void Overset()
+    private int coinCount = 0;
+    private int scoreCount = 0;
+
+	private void Update()
+	{
+        coinCount = _score.CoinScore;
+        Debug.Log(coinCount);
+        scoreCount = _score.KyoriScore;
+        Debug.Log(scoreCount);
+    }
+
+	public void Overset()
 	{
         _score.StopSwich(false);
         GameObject game = Instantiate(over, canvasTran, false);
         game.transform.SetParent(canvas.transform, false);
 
-        coin = over.transform.Find("coinText").GetComponent<TextMeshProUGUI>();
-        score=over.transform.Find("scoreText").GetComponent<TextMeshProUGUI>();
+        coin = game.transform.Find("coinText").GetComponent<TextMeshProUGUI>();
+        score = game.transform.Find("scoreText").GetComponent<TextMeshProUGUI>();
 
-        _score.TextUpdate(coin, score);
+        coin.text = coinCount.ToString();
+        score.text = scoreCount.ToString();
 
         Time.timeScale = 0;
     }
