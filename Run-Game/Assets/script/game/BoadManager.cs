@@ -15,18 +15,24 @@ public class BoadManager : MonoBehaviour
     [SerializeField]
     private GameObject positionSlope;
     [SerializeField]
+    private GameObject positionIllust;
+    [SerializeField]
+    private CollectionGame _illust;
+    [SerializeField]
     private TimeStart Stop;
 
     private float nextSpawnTime = 0;
     private int Rnum = 0;
     private int Cnum = 0;
     private Vector3 slopePos;
+    private Vector3 illustPos;
     private Vector3 itemPos;
 
 	private void Start()
 	{
         itemPos = positionItem.transform.position;
         slopePos = positionSlope.transform.position;
+        illustPos = positionIllust.transform.position;
     }
 
 	void Update()
@@ -50,17 +56,34 @@ public class BoadManager : MonoBehaviour
 			{
                 case 1: //穴付き床
                     Cnum = Random.Range(0, 1);
-                    obj = (GameObject)GameObject.Instantiate(item[Cnum], slopePos, Quaternion.identity);
+                    obj = (GameObject)GameObject
+                        .Instantiate(item[Cnum], slopePos, Quaternion.identity);
                     break;
 
                 case 2: //スロープ
                     Cnum = Random.Range(0, item.Length);
-                    obj = (GameObject)GameObject.Instantiate(item[Cnum],slopePos, Quaternion.identity);
+					if (Cnum==0)
+					{
+                        _illust.CreateIllust(slopePos);
+					}
+					else
+					{
+                        obj = (GameObject)GameObject.
+                            Instantiate(item[Cnum], slopePos, Quaternion.identity);
+					}
                     break;
 
 				default://普通の床
 			        Cnum = Random.Range(0, item.Length);
-                    obj = (GameObject)GameObject.Instantiate(item[Cnum], itemPos, Quaternion.identity);
+					if (Cnum==0)
+					{
+                        _illust.CreateIllust(illustPos);
+					}
+					else
+					{
+                        obj = (GameObject)GameObject
+                            .Instantiate(item[Cnum], itemPos, Quaternion.identity);
+					}
 					break;
 			}
 		}
