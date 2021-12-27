@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3354670471232440454
+--- !u!1 &3283695077852956827
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4537066831119743281}
-  - component: {fileID: 6058175258626017185}
-  - component: {fileID: 4619110727981007849}
-  - component: {fileID: 3354670471232440455}
+  - component: {fileID: 4461605417353214252}
+  - component: {fileID: 6273195488307333052}
+  - component: {fileID: 4829627882501538804}
+  - component: {fileID: 4970008285420267294}
   m_Layer: 0
   m_Name: get character29
   m_TagString: Untagged
@@ -19,13 +19,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4537066831119743281
+--- !u!4 &4461605417353214252
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354670471232440454}
+  m_GameObject: {fileID: 3283695077852956827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 7.18, y: -1.38, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6058175258626017185
+--- !u!212 &6273195488307333052
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354670471232440454}
+  m_GameObject: {fileID: 3283695077852956827}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -84,13 +84,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4619110727981007849
+--- !u!61 &4829627882501538804
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354670471232440454}
+  m_GameObject: {fileID: 3283695077852956827}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -110,18 +110,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 25.004885, y: 30.000002}
   m_EdgeRadius: 0
---- !u!114 &3354670471232440455
+--- !u!114 &4970008285420267294
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3354670471232440454}
+  m_GameObject: {fileID: 3283695077852956827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac74bce808c0f4241b2d72ea9fb72742, type: 3}
+  m_Script: {fileID: 11500000, guid: ad40c061f54079047851d186d40dd5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveBoad: 1
+  disIllust: 28
   speed: 0.1
-  boadbody: {fileID: 3354670471232440454}
+  boadbody: {fileID: 3283695077852956827}
