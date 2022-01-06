@@ -77,4 +77,9 @@ public class CollectionIllust : MonoBehaviour
         pos.x -= speed;
         boadbody.transform.position = pos;
     }
+
+    private string Sendenum()
+	{
+        return disIllust.ToString();
+	}
 }
