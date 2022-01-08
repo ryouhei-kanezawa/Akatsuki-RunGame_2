@@ -22,9 +22,7 @@ public class GameOver : MonoBehaviour
 	private void Update()
 	{
         coinCount = _score.CoinScore;
-        Debug.Log(coinCount);
         scoreCount = _score.KyoriScore;
-        Debug.Log(scoreCount);
     }
 
 	public void Overset()

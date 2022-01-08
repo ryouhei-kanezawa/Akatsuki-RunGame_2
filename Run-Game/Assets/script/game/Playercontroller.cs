@@ -15,6 +15,8 @@ public class Playercontroller : MonoBehaviour
     [SerializeField]
     private TimeStart Stop;
 
+    private CollectionGallery _gallery = new CollectionGallery();
+    private CollectionIllust _illust;
     private Rigidbody2D player_jump;
     private int jumpCount;
 
@@ -51,9 +53,15 @@ public class Playercontroller : MonoBehaviour
 	{
         if (collision.gameObject.CompareTag("coin"))
         {
-            Debug.Log("coinSet");
             _score.CoinUpdate();
+            Destroy(collision.gameObject);
+        }
 
+		if (collision.gameObject.GetComponent<CollectionIllust>())
+		{
+            _illust = collision.gameObject.GetComponent<CollectionIllust>();
+            Debug.Log(_illust.SendEnum());
+            _gallery.OpenIllust(_illust.SendEnum());
             Destroy(collision.gameObject);
         }
 	}

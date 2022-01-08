@@ -67,9 +67,13 @@ public class CollectionIllust : MonoBehaviour
 
     private Vector3 pos = new Vector3();
 
-    private void Update()
-    {
+	private void Start()
+	{
         pos = boadbody.transform.position;
+	}
+
+	private void FixedUpdate()
+    {
         pos.x -= speed;
         boadbody.transform.position = pos;
     }
