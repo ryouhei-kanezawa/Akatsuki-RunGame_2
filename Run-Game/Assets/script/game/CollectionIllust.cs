@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum distinction
+public enum distinction
 {
     character1,
     character2,
@@ -74,7 +74,7 @@ public class CollectionIllust : MonoBehaviour
         boadbody.transform.position = pos;
     }
 
-    private distinction Sendenum()
+    public distinction SendEnum()
 	{
         return dis_Illust;
 	}
