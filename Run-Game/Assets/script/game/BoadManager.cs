@@ -22,8 +22,6 @@ public class BoadManager : MonoBehaviour
     private TimeStart Stop;
 
     private float nextSpawnTime = 0;
-    private int Rnum = 0;
-    private int Cnum = 0;
     private Vector3 slopePos;
     private Vector3 illustPos;
     private Vector3 itemPos;
@@ -45,19 +43,19 @@ public class BoadManager : MonoBehaviour
     }
     private void LocalInstantate()
     {
-        Rnum = Random.Range(0, field.Length);
+        int Rnum = Random.Range(0, field.Length);
         GameObject opt = (GameObject)GameObject.Instantiate(field[Rnum]);
 
 		if (Stop.StopMoment())
 		{
             GameObject obj;
+            int Cnum;
 
             switch (Rnum)
 			{
                 case 1: //穴付き床
                     Cnum = Random.Range(0, 1);
-                    obj = (GameObject)GameObject
-                        .Instantiate(item[Cnum], slopePos, Quaternion.identity);
+                    obj = Instantiate(item[Cnum], slopePos, Quaternion.identity);
                     break;
 
                 case 2: //スロープ
@@ -68,8 +66,7 @@ public class BoadManager : MonoBehaviour
 					}
 					else
 					{
-                        obj = (GameObject)GameObject.
-                            Instantiate(item[Cnum], slopePos, Quaternion.identity);
+                        obj = Instantiate(item[Cnum], slopePos, Quaternion.identity);
 					}
                     break;
 
@@ -81,8 +78,7 @@ public class BoadManager : MonoBehaviour
 					}
 					else
 					{
-                        obj = (GameObject)GameObject
-                            .Instantiate(item[Cnum], itemPos, Quaternion.identity);
+                        obj = Instantiate(item[Cnum], itemPos, Quaternion.identity);
 					}
 					break;
 			}

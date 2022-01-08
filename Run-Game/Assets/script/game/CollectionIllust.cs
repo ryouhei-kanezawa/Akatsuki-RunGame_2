@@ -59,7 +59,7 @@ enum distinction
 public class CollectionIllust : MonoBehaviour
 {
     [SerializeField]
-    private distinction disIllust;
+    private distinction dis_Illust;
     [SerializeField]
     private float speed = 0.1f;
     [SerializeField]
@@ -67,19 +67,15 @@ public class CollectionIllust : MonoBehaviour
 
     private Vector3 pos = new Vector3();
 
-    private void Awake()
+    private void Update()
     {
         pos = boadbody.transform.position;
-    }
-
-    private void FixedUpdate()
-    {
         pos.x -= speed;
         boadbody.transform.position = pos;
     }
 
-    private string Sendenum()
+    private distinction Sendenum()
 	{
-        return disIllust.ToString();
+        return dis_Illust;
 	}
 }
