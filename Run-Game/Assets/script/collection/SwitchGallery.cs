@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SwitchGallery : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField]
+	private Button appear_illust;
+	[SerializeField]
+	private GameObject character_illust;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	CollectionGallery _gallery = new CollectionGallery();
+
+	private void Reset()
+	{
+		appear_illust = GetComponent<Button>();
+	}
+
+	private void Start()
+	{
+		if (!_gallery.GetGet_character(1))
+		{
+
+		}
+		else
+		{
+
+		}
+	}
 }
