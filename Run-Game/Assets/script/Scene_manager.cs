@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public enum Scene_num
 {
-	Title,
+	Title = 0,
 	Home,
 	collection,
 	Game
