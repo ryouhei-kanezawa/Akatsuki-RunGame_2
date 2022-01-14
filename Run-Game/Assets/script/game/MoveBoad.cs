@@ -12,10 +12,12 @@ public class MoveBoad : MonoBehaviour
     private GameObject boadbody;
 
     private Vector3 pos = new Vector3();
+    private RectTransform boadPosition;
 
     private void Awake()
     {
-        pos = boadbody.transform.position;
+        boadPosition = boadbody.GetComponent<RectTransform>();
+        pos = boadPosition.transform.position;
     }
 
     private void FixedUpdate()
@@ -24,7 +26,7 @@ public class MoveBoad : MonoBehaviour
         {
             pos.x -= speed;
 
-            boadbody.transform.position = pos;
+            boadPosition.transform.position = pos;
         }
     }
 

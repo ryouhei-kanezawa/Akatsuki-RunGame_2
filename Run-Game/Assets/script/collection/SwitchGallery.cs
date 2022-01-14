@@ -13,6 +13,8 @@ public class SwitchGallery : MonoBehaviour
 	private GameObject character_illust;
 
 	CollectionGallery _gallery = new CollectionGallery();
+	private Vector3 posIllust = new Vector3(0, 0, 5);
+	GameObject kob = new GameObject();
 
 	private void Reset()
 	{
@@ -37,6 +39,8 @@ public class SwitchGallery : MonoBehaviour
 
 	private void AppearIllust()
 	{
-
+		kob = Instantiate(character_illust);
+		kob.transform.position = posIllust;
+		kob.transform.localScale = Vector3.one * 1;
 	}
 }

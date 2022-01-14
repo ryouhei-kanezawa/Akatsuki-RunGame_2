@@ -13,7 +13,7 @@ public class TimeStart : MonoBehaviour
 
 	public bool StopMoment()
 	{
-            return active;
+        return active;
 	}
 
     public void StopLine()
