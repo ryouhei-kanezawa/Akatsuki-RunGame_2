@@ -7,21 +7,24 @@ public class CollectionIllust : MonoBehaviour
     [SerializeField]
     private distinction dis_Illust;
     [SerializeField]
-    private float speed = 0.1f;
-    [SerializeField]
-    private GameObject boadbody;
+    private float speed = 0.05f;
 
     private Vector3 pos = new Vector3();
+    private RectTransform illustPosition;
 
-	private void Start()
+    private void Start()
 	{
-        pos = boadbody.transform.position;
+        illustPosition = this.GetComponent<RectTransform>();
+        pos = illustPosition.transform.position;
 	}
 
-	private void FixedUpdate()
+	private void Update()
     {
-        pos.x -= speed;
-        boadbody.transform.position = pos;
+		if (Time.timeScale!=0)
+		{
+            pos.x -= speed;
+            illustPosition.transform.position = pos;
+		}
     }
 
     public distinction SendEnum()

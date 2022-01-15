@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveBoad: 1
-  speed: 0.1
+  speed: 0.05
   boadbody: {fileID: 8854207088788451396}

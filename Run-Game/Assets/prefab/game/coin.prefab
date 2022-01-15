@@ -204,7 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveBoad: 1
-  speed: 0.1
+  speed: 0.05
   boadbody: {fileID: 3873742856078635637}
 --- !u!50 &5284307803570895591
 Rigidbody2D:

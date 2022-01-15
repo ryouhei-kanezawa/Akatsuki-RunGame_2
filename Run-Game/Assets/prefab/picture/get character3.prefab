@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2339944952717484361}
+  - component: {fileID: 4189352033401992180}
   - component: {fileID: 7574716248282413880}
   - component: {fileID: 7476365800512601055}
   - component: {fileID: 6223063488698557489}
@@ -19,20 +19,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2339944952717484361
-Transform:
+--- !u!224 &4189352033401992180
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9096997950521406457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.18, y: -1.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 7.18, y: -1.38}
+  m_SizeDelta: {x: 25.004885, y: 30.000002}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7574716248282413880
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -123,5 +128,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dis_Illust: 2
-  speed: 0.1
-  boadbody: {fileID: 9096997950521406457}
+  speed: 0.05

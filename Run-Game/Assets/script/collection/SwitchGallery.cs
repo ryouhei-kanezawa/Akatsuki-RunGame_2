@@ -11,10 +11,12 @@ public class SwitchGallery : MonoBehaviour
 	private int num_illust;
 	[SerializeField]
 	private GameObject character_illust;
+	[SerializeField]
+	private Button deleteButton;
 
 	CollectionGallery _gallery = new CollectionGallery();
 	private Vector3 posIllust = new Vector3(0, 0, 5);
-	GameObject kob = new GameObject();
+	private GameObject instantObject;
 
 	private void Reset()
 	{
@@ -23,6 +25,8 @@ public class SwitchGallery : MonoBehaviour
 
 	private void Start()
 	{
+		deleteButton.onClick.AddListener(OnClickDeleteButton);
+
 		if (_gallery.GetGet_character(num_illust))
 		{
 			push_Illust.interactable = true;
@@ -39,8 +43,15 @@ public class SwitchGallery : MonoBehaviour
 
 	private void AppearIllust()
 	{
-		kob = Instantiate(character_illust);
-		kob.transform.position = posIllust;
-		kob.transform.localScale = Vector3.one * 1;
+		deleteButton.gameObject.SetActive(true);
+		instantObject = Instantiate(character_illust);
+		instantObject.transform.position = posIllust;
+		instantObject.transform.localScale = Vector3.one;
+	}
+
+	private void OnClickDeleteButton() 
+	{
+		Destroy(instantObject);
+		deleteButton.gameObject.SetActive(false);
 	}
 }
