@@ -34,8 +34,8 @@ public class GameOver : MonoBehaviour
         coin = game.transform.Find("coinText").GetComponent<TextMeshProUGUI>();
         score = game.transform.Find("scoreText").GetComponent<TextMeshProUGUI>();
 
-        coin.text = coinCount.ToString();
-        score.text = scoreCount.ToString();
+        coin.text = "coin:" + coinCount;
+        score.text = "score:" + scoreCount;
 
         Time.timeScale = 0;
     }

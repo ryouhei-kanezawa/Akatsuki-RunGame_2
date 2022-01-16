@@ -7,13 +7,19 @@ public class BoadManager : MonoBehaviour
     [SerializeField]
     private GameObject[] field;
     [SerializeField]
+    private GameObject slope;
+    [SerializeField]
     private GameObject[] item;
     [SerializeField]
     private float interval = 2f;
     [SerializeField]
+    private int fieldNum = 20;
+    [SerializeField]
     private GameObject positionItem;
     [SerializeField]
-    private GameObject positionSlope;
+    private GameObject positionSlopeTop;
+    [SerializeField]
+    private GameObject positionSlopeUnder;
     [SerializeField]
     private GameObject positionIllust;
     [SerializeField]
@@ -22,14 +28,17 @@ public class BoadManager : MonoBehaviour
     private TimeStart Stop;
 
     private float nextSpawnTime = 0;
-    private Vector3 slopePos;
+    private Vector3 slopePosUnder;
+    private Vector3 slopePosTop;
     private Vector3 illustPos;
     private Vector3 itemPos;
+    private bool fieldBool = true;
 
 	private void Start()
 	{
         itemPos = positionItem.transform.position;
-        slopePos = positionSlope.transform.position;
+        slopePosTop = positionSlopeTop.transform.position;
+        slopePosUnder = positionSlopeUnder.transform.position;
         illustPos = positionIllust.transform.position;
     }
 
@@ -43,44 +52,56 @@ public class BoadManager : MonoBehaviour
     }
     private void LocalInstantate()
     {
-        int Rnum = Random.Range(0, field.Length);
-        GameObject opt = (GameObject)GameObject.Instantiate(field[Rnum]);
+        var fieldPar = Random.Range(0, 100);
+		if (fieldPar>=fieldNum)
+		{
+            fieldBool = true;
+            Instantiate(slope);
+		}
+		else
+		{
+            fieldBool = false;
+            int Rnum = Random.Range(0, field.Length);
+            Instantiate(field[Rnum]);
+		}
 
 		if (Stop.StopMoment())
 		{
-            GameObject obj;
             int Cnum;
 
-            switch (Rnum)
+            switch (fieldBool)
 			{
-                case 1: //穴付き床
-                    Cnum = Random.Range(0, 1);
-                    obj = Instantiate(item[Cnum], slopePos, Quaternion.identity);
-                    break;
-
-                case 2: //スロープ
+                case true: //スロープ
                     Cnum = Random.Range(0, item.Length);
 					if (Cnum==0)
 					{
-                        _illust.CreateIllust(slopePos);
+                        _illust.CreateIllust(slopePosTop);
 					}
 					else
 					{
-                        obj = Instantiate(item[Cnum], slopePos, Quaternion.identity);
+                        var instantObject = item[Cnum];
+						if (instantObject.CompareTag("coin"))
+						{
+                            Instantiate(instantObject, slopePosTop, Quaternion.identity);
+						}
+						else
+						{
+                            Instantiate(instantObject, slopePosUnder, Quaternion.identity);
+                        }
 					}
                     break;
 
-				default://普通の床
-			        Cnum = Random.Range(0, item.Length);
-					if (Cnum==0)
-					{
+                case false: //通常・穴付き
+                    Cnum = Random.Range(0, item.Length);
+                    if (Cnum == 0)
+                    {
                         _illust.CreateIllust(illustPos);
-					}
-					else
-					{
-                        obj = Instantiate(item[Cnum], itemPos, Quaternion.identity);
-					}
-					break;
+                    }
+                    else
+                    {
+                        Instantiate(item[Cnum], itemPos, Quaternion.identity);
+                    }
+                    break;
 			}
 		}
     }
