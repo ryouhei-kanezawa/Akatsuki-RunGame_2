@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class BoadManager : MonoBehaviour
+public class FieldManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] field;
@@ -11,9 +12,17 @@ public class BoadManager : MonoBehaviour
     [SerializeField]
     private GameObject[] item;
     [SerializeField]
+    private GameObject[] illust;
+    [SerializeField]
     private float interval = 2f;
     [SerializeField]
     private int fieldNum = 20;
+    [SerializeField]
+    private float localSpeed = 0.05f;
+    [SerializeField]
+    private float timeSpeed = 10f;
+    [SerializeField]
+    private float acceleration = 0.015f;
     [SerializeField]
     private GameObject positionItem;
     [SerializeField]
@@ -23,10 +32,9 @@ public class BoadManager : MonoBehaviour
     [SerializeField]
     private GameObject positionIllust;
     [SerializeField]
-    private CollectionGame _illust;
-    [SerializeField]
     private TimeStart Stop;
 
+    private static float speed;
     private float nextSpawnTime = 0;
     private Vector3 slopePosUnder;
     private Vector3 slopePosTop;
@@ -34,12 +42,26 @@ public class BoadManager : MonoBehaviour
     private Vector3 itemPos;
     private bool fieldBool = true;
 
-	private void Start()
+    private void Reset()
+    {
+        var guids_prefab = AssetDatabase
+            .FindAssets("t:prefab", new string[] { "Assets/prefab/picture" });
+        illust = new GameObject[guids_prefab.Length];
+
+        for (int i = 0; i < guids_prefab.Length; i++)
+        {
+            string path_prefab = AssetDatabase.GUIDToAssetPath(guids_prefab[i]);
+            illust[i] = AssetDatabase.LoadAssetAtPath<GameObject>(path_prefab);
+        }
+    }
+
+    private void Start()
 	{
         itemPos = positionItem.transform.position;
         slopePosTop = positionSlopeTop.transform.position;
         slopePosUnder = positionSlopeUnder.transform.position;
         illustPos = positionIllust.transform.position;
+        speed = localSpeed;
     }
 
 	void Update()
@@ -49,7 +71,27 @@ public class BoadManager : MonoBehaviour
             nextSpawnTime = Time.timeSinceLevelLoad + interval;
             LocalInstantate();
         }
+
+		if (timeSpeed%Time.timeSinceLevelLoad<=0.0001f)
+		{
+            speed += acceleration;
+            interval -= acceleration;
+		}
     }
+
+    public float Speed
+	{
+		get
+		{
+            return speed;
+		}
+
+		set
+		{
+            speed += value;
+		}
+	}
+
     private void LocalInstantate()
     {
         var fieldPar = Random.Range(0, 100);
@@ -75,7 +117,7 @@ public class BoadManager : MonoBehaviour
                     Cnum = Random.Range(0, item.Length);
 					if (Cnum==0)
 					{
-                        _illust.CreateIllust(slopePosTop);
+                        CreateIllust(slopePosTop);
 					}
 					else
 					{
@@ -95,7 +137,7 @@ public class BoadManager : MonoBehaviour
                     Cnum = Random.Range(0, item.Length);
                     if (Cnum == 0)
                     {
-                        _illust.CreateIllust(illustPos);
+                        CreateIllust(illustPos);
                     }
                     else
                     {
@@ -104,6 +146,11 @@ public class BoadManager : MonoBehaviour
                     break;
 			}
 		}
+    }
+    private void CreateIllust(Vector3 pos)
+    {
+        int rIllust = Random.Range(0, illust.Length);
+        Instantiate(illust[rIllust], pos, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class MoveBoad : MonoBehaviour
 {
-    [SerializeField]
-    private float speed = 0.01f;
-
     private Vector3 pos = new Vector3();
     private RectTransform boadPosition;
+    private FieldManager field = new FieldManager();
 
     private void Awake()
     {
-        boadPosition = this.GetComponent<RectTransform>();
+        boadPosition = GetComponent<RectTransform>();
         pos = boadPosition.transform.position;
     }
 
@@ -20,7 +18,7 @@ public class MoveBoad : MonoBehaviour
     {
         if (Time.timeScale!=0)
         {
-            pos.x -= speed;
+            pos.x -= field.Speed;
 
             boadPosition.transform.position = pos;
         }

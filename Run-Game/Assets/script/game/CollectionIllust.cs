@@ -6,15 +6,14 @@ public class CollectionIllust : MonoBehaviour
 {
     [SerializeField]
     private distinction dis_Illust;
-    [SerializeField]
-    private float speed = 0.05f;
 
     private Vector3 pos = new Vector3();
     private RectTransform illustPosition;
+    private FieldManager _field = new FieldManager();
 
     private void Start()
 	{
-        illustPosition = this.GetComponent<RectTransform>();
+        illustPosition = GetComponent<RectTransform>();
         pos = illustPosition.transform.position;
 	}
 
@@ -22,7 +21,7 @@ public class CollectionIllust : MonoBehaviour
     {
 		if (Time.timeScale!=0)
 		{
-            pos.x -= speed;
+            pos.x -= _field.Speed;
             illustPosition.transform.position = pos;
 		}
     }

@@ -19,8 +19,16 @@ public class BackBoadManager : MonoBehaviour
 
 	void Update()
     {
-        posGround.x -= speed;
-        rectGround.transform.position = posGround;
+		if (Time.timeScale==0)
+		{
+            posGround.x -= 0;
+            rectGround.transform.position = posGround;
+        }
+		else
+		{
+            posGround.x -= speed;
+            rectGround.transform.position = posGround;
+		}
 
 		if (rectGround.position.x<=maxPosition)
 		{
