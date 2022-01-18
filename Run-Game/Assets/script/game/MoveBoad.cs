@@ -6,10 +6,11 @@ public class MoveBoad : MonoBehaviour
 {
     private Vector3 pos = new Vector3();
     private RectTransform boadPosition;
-    private FieldManager field = new FieldManager();
+    private FieldManager field;
 
     private void Awake()
     {
+        field = GameObject.Find("break_area").GetComponent<FieldManager>();
         boadPosition = GetComponent<RectTransform>();
         pos = boadPosition.transform.position;
     }

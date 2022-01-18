@@ -15,6 +15,7 @@ public class GameOver : MonoBehaviour
     private TextMeshProUGUI score;
     private TextMeshProUGUI coin;
     private Transform canvasTran;
+    private HomeScore home = new HomeScore();
 
     private int coinCount = 0;
     private int scoreCount = 0;
@@ -36,6 +37,8 @@ public class GameOver : MonoBehaviour
 
         coin.text = "coin:" + coinCount;
         score.text = "score:" + scoreCount;
+
+        home.SetScore(scoreCount);
 
         Time.timeScale = 0;
     }

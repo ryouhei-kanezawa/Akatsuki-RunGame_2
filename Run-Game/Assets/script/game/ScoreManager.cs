@@ -15,32 +15,18 @@ public class ScoreManager : MonoBehaviour
     private TimeStart Stop;
 
     private bool swich = true;
-    private int coinScore;
-    private int kyoriScore;
 
-    public int CoinScore
-	{
-		get
-		{
-            return coinScore;
-		}
-	}
+	public int CoinScore { get; private set; }
 
-    public int KyoriScore
-	{
-		get
-		{
-            return kyoriScore;
-		}
-	}
+	public int KyoriScore { get; private set; }
 
-    void Start()
+	void Start()
     {
-        coinScore = 0;
-        kyoriScore = 0;
+        CoinScore = 0;
+        KyoriScore = 0;
 
-        coin.text = coinScore.ToString();
-        kyori.text = kyoriScore.ToString();
+        coin.text = CoinScore.ToString();
+        kyori.text = KyoriScore.ToString();
     }
 
 	private void Update()
@@ -49,18 +35,18 @@ public class ScoreManager : MonoBehaviour
         {
 			if (swich)
 			{
-                kyoriScore += score;
+                KyoriScore += score;
 			}
         }
 
-        kyori.text = kyoriScore.ToString();
+        kyori.text = KyoriScore.ToString();
 	}
 
     public void CoinUpdate()
 	{
-        coinScore++;
+        CoinScore++;
 
-        coin.text = coinScore.ToString();
+        coin.text = CoinScore.ToString();
 	}
 
     public void StopSwich(bool set)

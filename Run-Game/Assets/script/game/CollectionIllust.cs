@@ -9,10 +9,11 @@ public class CollectionIllust : MonoBehaviour
 
     private Vector3 pos = new Vector3();
     private RectTransform illustPosition;
-    private FieldManager _field = new FieldManager();
+    private FieldManager _field;
 
     private void Start()
 	{
+        _field = GameObject.Find("break_area").GetComponent<FieldManager>();
         illustPosition = GetComponent<RectTransform>();
         pos = illustPosition.transform.position;
 	}

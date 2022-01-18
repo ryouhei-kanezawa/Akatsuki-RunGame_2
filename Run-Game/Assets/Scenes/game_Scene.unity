@@ -2751,7 +2751,7 @@ MonoBehaviour:
   interval: 2
   fieldNum: 15
   localSpeed: 0.05
-  timeSpeed: 10
+  timeSpeed: 20
   acceleration: 0.02
   positionItem: {fileID: 826413739}
   positionSlopeTop: {fileID: 1188111359}

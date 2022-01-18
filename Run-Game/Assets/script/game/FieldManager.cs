@@ -40,7 +40,6 @@ public class FieldManager : MonoBehaviour
     private Vector3 slopePosTop;
     private Vector3 illustPos;
     private Vector3 itemPos;
-    private bool fieldBool = true;
 
     private void Reset()
     {
@@ -95,6 +94,8 @@ public class FieldManager : MonoBehaviour
     private void LocalInstantate()
     {
         var fieldPar = Random.Range(0, 100);
+        bool fieldBool;
+
 		if (fieldPar>=fieldNum)
 		{
             fieldBool = true;
