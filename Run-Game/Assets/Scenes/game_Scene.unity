@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_body: {fileID: 385390077}
-  junmp: 6
+  junmp: 7
   _score: {fileID: 1359310021}
   _orver: {fileID: 1206416322}
   Stop: {fileID: 1840343984}
@@ -2462,8 +2462,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
+    - {fileID: 0}
     - {fileID: 11400000, guid: 68189a3bb972ded47bba86e500ee8085, type: 2}
     m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1840343984}
+          m_TargetAssemblyTypeName: TimeStart, Assembly-CSharp
+          m_MethodName: StopLine
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1840343984}
@@ -2749,7 +2764,7 @@ MonoBehaviour:
   - {fileID: 2941519265941870848, guid: eedb6bde30b9b2f4c93235f659345915, type: 3}
   - {fileID: 3237100650291966357, guid: fbb8f60deab0d2c4f85ae7b99628ac07, type: 3}
   interval: 2
-  fieldNum: 15
+  fieldNum: 80
   localSpeed: 0.05
   timeSpeed: 20
   acceleration: 0.02

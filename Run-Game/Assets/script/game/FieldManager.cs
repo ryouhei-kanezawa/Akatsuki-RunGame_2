@@ -71,7 +71,7 @@ public class FieldManager : MonoBehaviour
             LocalInstantate();
         }
 
-		if (timeSpeed%Time.timeSinceLevelLoad<=0.0001f)
+		if (timeSpeed%Time.timeSinceLevelLoad<=0.001f)
 		{
             speed += acceleration;
             interval -= acceleration;

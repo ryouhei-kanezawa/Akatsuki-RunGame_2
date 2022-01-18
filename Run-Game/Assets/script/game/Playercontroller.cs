@@ -7,7 +7,7 @@ public class Playercontroller : MonoBehaviour
     [SerializeField]
     private GameObject player_body;
     [SerializeField]
-    private float junmp = 20.0f;
+    private float junmp = 5.0f;
     [SerializeField]
     private ScoreManager _score;
     [SerializeField]
