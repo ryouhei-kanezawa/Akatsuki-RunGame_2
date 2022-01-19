@@ -10,15 +10,6 @@ public class PaseUI : MonoBehaviour
     [SerializeField]
     private ScoreManager _score;
 
-    /*
-    [SerializeField]
-    private GameObject pauseObject;     //プレハブ化したポーズ画面
-    [SerializeField]
-    private GameObject canvas;          //InstantiateするCanvas
-
-    private GameObject _pause;
-    private Transform canvasTran;
-    */
     private bool check = true;
 
     void Awake()
@@ -30,9 +21,6 @@ public class PaseUI : MonoBehaviour
     {
         if (check)
         {
-            //_pause= Instantiate(pauseObject, canvasTran, false);
-            //_pause.transform.SetParent(canvas.transform, false);
-
             Time.timeScale = 0;
             check = false;
             _score.StopSwich(false);

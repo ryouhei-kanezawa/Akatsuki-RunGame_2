@@ -19,7 +19,7 @@ public class MoveBoad : MonoBehaviour
     {
         if (Time.timeScale!=0)
         {
-            pos.x -= field.Speed;
+            pos.x -= field.Speed * Time.deltaTime;
 
             boadPosition.transform.position = pos;
         }

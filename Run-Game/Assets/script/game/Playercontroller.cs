@@ -13,6 +13,8 @@ public class Playercontroller : MonoBehaviour
     [SerializeField]
     private GameOver _orver;
     [SerializeField]
+    private PlaySound sound;
+    [SerializeField]
     private TimeStart Stop;
 
     private CollectionGallery _gallery = new CollectionGallery();
@@ -47,6 +49,7 @@ public class Playercontroller : MonoBehaviour
     private void Jump_getkey()
 	{
         player_jump.velocity = Vector2.up * junmp;
+        sound.PlayJumpEffect();
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -54,6 +57,7 @@ public class Playercontroller : MonoBehaviour
         if (collision.gameObject.CompareTag("coin"))
         {
             _score.CoinUpdate();
+            sound.PlayCoinEffect();
             Destroy(collision.gameObject);
         }
 
@@ -75,6 +79,7 @@ public class Playercontroller : MonoBehaviour
 
 		if (collision.gameObject.CompareTag("gameorver"))
 		{
+            sound.PlayHitEffect();
             _orver.Overset();
 		}
     }

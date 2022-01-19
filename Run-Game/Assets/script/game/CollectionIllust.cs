@@ -22,7 +22,7 @@ public class CollectionIllust : MonoBehaviour
     {
 		if (Time.timeScale!=0)
 		{
-            pos.x -= _field.Speed;
+            pos.x -= _field.Speed * Time.deltaTime;
             illustPosition.transform.position = pos;
 		}
     }

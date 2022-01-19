@@ -20,7 +20,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField]
     private float localSpeed = 0.05f;
     [SerializeField]
-    private float timeSpeed = 10f;
+    private float scoreSpeed = 100f;
     [SerializeField]
     private float acceleration = 0.015f;
     [SerializeField]
@@ -33,6 +33,8 @@ public class FieldManager : MonoBehaviour
     private GameObject positionIllust;
     [SerializeField]
     private TimeStart Stop;
+    [SerializeField]
+    private ScoreManager score;
 
     private static float speed;
     private float nextSpawnTime = 0;
@@ -61,6 +63,7 @@ public class FieldManager : MonoBehaviour
         slopePosUnder = positionSlopeUnder.transform.position;
         illustPos = positionIllust.transform.position;
         speed = localSpeed;
+        intarvalLock = 0.001f;
     }
 
 	void Update()
@@ -71,11 +74,10 @@ public class FieldManager : MonoBehaviour
             LocalInstantate();
         }
 
-		if (timeSpeed%Time.timeSinceLevelLoad<=0.001f)
+		if ((float)score.KyoriScore % scoreSpeed <= 0.001f)
 		{
-            speed += acceleration;
-            interval -= acceleration;
-		}
+            speed += acceleration * Time.deltaTime;
+        }
     }
 
     public float Speed
