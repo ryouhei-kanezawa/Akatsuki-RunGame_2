@@ -799,8 +799,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: coin
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b88bcc764b568ed45a42d40cc7381197, type: 2}
+  m_sharedMaterial: {fileID: 6834276394241443581, guid: b88bcc764b568ed45a42d40cc7381197, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1554,8 +1554,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: aaaaaaaaaaaaaaaaaa
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b88bcc764b568ed45a42d40cc7381197, type: 2}
+  m_sharedMaterial: {fileID: 6834276394241443581, guid: b88bcc764b568ed45a42d40cc7381197, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2966,7 +2966,7 @@ MonoBehaviour:
   fieldNum: 80
   localSpeed: 5
   scoreSpeed: 1000
-  acceleration: 50
+  acceleration: 10
   positionItem: {fileID: 826413739}
   positionSlopeTop: {fileID: 1188111359}
   positionSlopeUnder: {fileID: 1588431606}
