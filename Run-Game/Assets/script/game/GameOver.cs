@@ -11,6 +11,8 @@ public class GameOver : MonoBehaviour
     private ScoreManager _score;
     [SerializeField]
     private GameObject canvas;          //Instantiate‚·‚éCanvas
+    [SerializeField]
+    private PlayBGM sound;
 
     private TextMeshProUGUI score;
     private TextMeshProUGUI coin;
@@ -39,6 +41,7 @@ public class GameOver : MonoBehaviour
         score.text = "score:" + scoreCount;
 
         home.SetScore(scoreCount);
+        sound.StopSound();
 
         Time.timeScale = 0;
     }

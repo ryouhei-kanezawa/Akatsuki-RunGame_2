@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TimeStart : MonoBehaviour
 {
+    [SerializeField]
+    private PlayBGM sound;
+
     private bool active = true;
 
 	private void Start()
@@ -25,6 +28,7 @@ public class TimeStart : MonoBehaviour
         else
         {
             active = true;
+            sound.PlaySoundBGM();
         }
     }
 }

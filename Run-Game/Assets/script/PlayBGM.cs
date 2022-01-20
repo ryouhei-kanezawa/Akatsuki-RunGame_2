@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayBGM : MonoBehaviour
 {
 	[SerializeField]
-	private AudioClip bgm;
-	[SerializeField]
 	private AudioClip button;
 
 	private AudioSource audio;
@@ -16,8 +14,30 @@ public class PlayBGM : MonoBehaviour
 		audio = GetComponent<AudioSource>();
 	}
 
-	private void PlaySoundBGM()
+	public void PlaySoundBGM()
 	{
-		
+		audio.Play();
+	}
+
+	public void StopSound()
+	{
+		audio.Stop();
+	}
+
+	public void PoseSoundBGM(bool swich)
+	{
+		if (swich)
+		{
+			audio.Pause();
+		}
+		else
+		{
+			audio.UnPause();
+		}
+	}
+
+	public void PlayButton()
+	{
+		audio.PlayOneShot(button);
 	}
 }

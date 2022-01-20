@@ -26,6 +26,8 @@ public class Scene_manager : MonoBehaviour
 	[SerializeField]
 	private Scene_num num2;
 
+	private PlayBGM sound;
+
 	private void Start()
 	{
 		change.onClick.AddListener(() => MoveScene((int)num));
@@ -33,10 +35,13 @@ public class Scene_manager : MonoBehaviour
 		{
 			change2.onClick.AddListener(() => MoveScene((int)num2));
 		}
+
+		sound = GameObject.Find("soundSystem").GetComponent<PlayBGM>();
 	}
 
 	private void MoveScene(int num)
 	{
+		sound.PlayButton();
 		SceneManager.LoadScene(num);
 	}
 }

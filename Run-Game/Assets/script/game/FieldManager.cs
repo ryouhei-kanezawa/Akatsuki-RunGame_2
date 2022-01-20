@@ -63,7 +63,6 @@ public class FieldManager : MonoBehaviour
         slopePosUnder = positionSlopeUnder.transform.position;
         illustPos = positionIllust.transform.position;
         speed = localSpeed;
-        intarvalLock = 0.001f;
     }
 
 	void Update()
