@@ -569,7 +569,6 @@ MonoBehaviour:
   m_Clips: []
   m_Markers:
     m_Objects:
-    - {fileID: 5890997709221693421}
     - {fileID: -957861707085395477}
 --- !u!114 &8531201361983646578
 MonoBehaviour:

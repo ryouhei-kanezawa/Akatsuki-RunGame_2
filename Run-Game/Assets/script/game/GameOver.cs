@@ -19,17 +19,9 @@ public class GameOver : MonoBehaviour
     private Transform canvasTran;
     private HomeScore home = new HomeScore();
 
-    private int coinCount = 0;
-    private int scoreCount = 0;
-
-	private void Update()
-	{
-        coinCount = _score.CoinScore;
-        scoreCount = _score.KyoriScore;
-    }
-
 	public void Overset()
-	{
+    {
+
         _score.StopSwich(false);
         GameObject game = Instantiate(over, canvasTran, false);
         game.transform.SetParent(canvas.transform, false);
@@ -37,10 +29,10 @@ public class GameOver : MonoBehaviour
         coin = game.transform.Find("coinText").GetComponent<TextMeshProUGUI>();
         score = game.transform.Find("scoreText").GetComponent<TextMeshProUGUI>();
 
-        coin.text = "coin:" + coinCount;
-        score.text = "score:" + scoreCount;
+        coin.text = "coin:" + _score.CoinScore;
+        score.text = "score:" + _score.KyoriScore;
 
-        home.SetScore(scoreCount);
+        home.SetScore(_score.KyoriScore);
         sound.StopSound();
 
         Time.timeScale = 0;

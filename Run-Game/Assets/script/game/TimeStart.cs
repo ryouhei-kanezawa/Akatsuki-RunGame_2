@@ -7,10 +7,11 @@ public class TimeStart : MonoBehaviour
     [SerializeField]
     private PlayBGM sound;
 
-    private bool active = true;
+    private bool active;
 
 	private void Start()
 	{
+        active = false;
         Time.timeScale = 1;
 	}
 
@@ -21,11 +22,7 @@ public class TimeStart : MonoBehaviour
 
     public void StopLine()
     {
-        if (active)
-        {
-            active = false;
-        }
-        else
+        if(!active)
         {
             active = true;
             sound.PlaySoundBGM();

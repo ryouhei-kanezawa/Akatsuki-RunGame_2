@@ -72,10 +72,12 @@ public class FieldManager : MonoBehaviour
             nextSpawnTime = Time.timeSinceLevelLoad + interval;
             LocalInstantate();
         }
-
-		if ((float)score.KyoriScore % scoreSpeed <= 0.001f)
-		{
-            speed += acceleration * Time.deltaTime;
+		if (Stop.StopMoment())
+        {
+            if ((float)score.KyoriScore % scoreSpeed <= 0.001f)
+            {
+                speed += acceleration * Time.deltaTime;
+            }
         }
     }
 
@@ -130,7 +132,7 @@ public class FieldManager : MonoBehaviour
 						}
 						else
 						{
-                            Instantiate(instantObject, slopePosUnder, Quaternion.identity);
+                            //Instantiate(instantObject, slopePosUnder, Quaternion.identity);
                         }
 					}
                     break;

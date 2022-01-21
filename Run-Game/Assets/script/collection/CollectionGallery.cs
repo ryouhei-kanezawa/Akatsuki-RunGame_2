@@ -233,6 +233,36 @@ public class CollectionGallery
 			case distinction.character40:
 				get_character40 = true;
 				break;
+			case distinction.character41:
+				get_character31 = true;
+				break;
+			case distinction.character42:
+				get_character32 = true;
+				break;
+			case distinction.character43:
+				get_character33 = true;
+				break;
+			case distinction.character44:
+				get_character34 = true;
+				break;
+			case distinction.character45:
+				get_character35 = true;
+				break;
+			case distinction.character46:
+				get_character36 = true;
+				break;
+			case distinction.character47:
+				get_character37 = true;
+				break;
+			case distinction.character48:
+				get_character38 = true;
+				break;
+			case distinction.character49:
+				get_character39 = true;
+				break;
+			case distinction.character50:
+				get_character40 = true;
+				break;
 			default:
 				break;
 		}

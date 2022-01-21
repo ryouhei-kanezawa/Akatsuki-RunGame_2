@@ -78,9 +78,9 @@ public class Playercontroller : MonoBehaviour
         }
 
 		if (collision.gameObject.CompareTag("gameorver"))
-		{
+        {
             sound.PlayHitEffect();
             _orver.Overset();
-		}
+        }
     }
 }

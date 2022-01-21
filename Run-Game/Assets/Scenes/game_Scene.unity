@@ -1233,7 +1233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 826413739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13, y: -2.14, z: 0}
+  m_LocalPosition: {x: 13, y: -2.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2962,11 +2962,11 @@ MonoBehaviour:
   - {fileID: 1571419247394632797, guid: 04232e62dc78715458a7c446b71552a9, type: 3}
   - {fileID: 2941519265941870848, guid: eedb6bde30b9b2f4c93235f659345915, type: 3}
   - {fileID: 3237100650291966357, guid: fbb8f60deab0d2c4f85ae7b99628ac07, type: 3}
-  interval: 2
+  interval: 2.3
   fieldNum: 80
   localSpeed: 5
   scoreSpeed: 1000
-  acceleration: 10
+  acceleration: 6
   positionItem: {fileID: 826413739}
   positionSlopeTop: {fileID: 1188111359}
   positionSlopeUnder: {fileID: 1588431606}
