@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
@@ -10,7 +12,11 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI kyori;
     [SerializeField]
+    private Text plusCoin;
+    [SerializeField]
     private int score = 10;
+    [SerializeField]
+    private int addCoin = 1000;
     [SerializeField]
     private TimeStart Stop;
 
@@ -27,6 +33,7 @@ public class ScoreManager : MonoBehaviour
 
         coin.text = CoinScore.ToString();
         kyori.text = KyoriScore.ToString();
+        plusCoin.text = "+" + addCoin;
     }
 
 	private void Update()
@@ -47,7 +54,8 @@ public class ScoreManager : MonoBehaviour
         CoinScore++;
 
         coin.text = CoinScore.ToString();
-	}
+        KyoriScore += addCoin;
+    }
 
     public void StopSwich(bool set)
 	{

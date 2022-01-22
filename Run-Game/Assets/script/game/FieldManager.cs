@@ -24,7 +24,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField]
     private float acceleration = 0.015f;
     [SerializeField]
-    private GameObject positionItem;
+    private GameObject positionStone;
     [SerializeField]
     private GameObject positionSlopeTop;
     [SerializeField]
@@ -41,7 +41,7 @@ public class FieldManager : MonoBehaviour
     private Vector3 coinPos;
     private Vector3 slopePosTop;
     private Vector3 illustPos;
-    private Vector3 itemPos;
+    private Vector3 stonePos;
 
     private void Reset()
     {
@@ -58,7 +58,7 @@ public class FieldManager : MonoBehaviour
 
     private void Start()
 	{
-        itemPos = positionItem.transform.position;
+        stonePos = positionStone.transform.position;
         slopePosTop = positionSlopeTop.transform.position;
         coinPos = positionCoin.transform.position;
         illustPos = positionIllust.transform.position;
@@ -148,7 +148,7 @@ public class FieldManager : MonoBehaviour
 						}
 						else
                         {
-                            Instantiate(item[Cnum], itemPos, Quaternion.identity);
+                            Instantiate(item[Cnum], stonePos, Quaternion.identity);
                         }
                     }
                     break;
