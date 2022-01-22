@@ -28,7 +28,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField]
     private GameObject positionSlopeTop;
     [SerializeField]
-    private GameObject positionSlopeUnder;
+    private GameObject positionCoin;
     [SerializeField]
     private GameObject positionIllust;
     [SerializeField]
@@ -38,7 +38,7 @@ public class FieldManager : MonoBehaviour
 
     private static float speed;
     private float nextSpawnTime = 0;
-    private Vector3 slopePosUnder;
+    private Vector3 coinPos;
     private Vector3 slopePosTop;
     private Vector3 illustPos;
     private Vector3 itemPos;
@@ -60,7 +60,7 @@ public class FieldManager : MonoBehaviour
 	{
         itemPos = positionItem.transform.position;
         slopePosTop = positionSlopeTop.transform.position;
-        slopePosUnder = positionSlopeUnder.transform.position;
+        coinPos = positionCoin.transform.position;
         illustPos = positionIllust.transform.position;
         speed = localSpeed;
     }
@@ -130,10 +130,6 @@ public class FieldManager : MonoBehaviour
 						{
                             Instantiate(instantObject, slopePosTop, Quaternion.identity);
 						}
-						else
-						{
-                            //Instantiate(instantObject, slopePosUnder, Quaternion.identity);
-                        }
 					}
                     break;
 
@@ -145,7 +141,15 @@ public class FieldManager : MonoBehaviour
                     }
                     else
                     {
-                        Instantiate(item[Cnum], itemPos, Quaternion.identity);
+                        var instantObject = item[Cnum];
+                        if (instantObject.CompareTag("coin"))
+                        {
+                            Instantiate(instantObject, coinPos, Quaternion.identity);
+						}
+						else
+                        {
+                            Instantiate(item[Cnum], itemPos, Quaternion.identity);
+                        }
                     }
                     break;
 			}

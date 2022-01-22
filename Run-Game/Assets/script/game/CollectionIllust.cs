@@ -13,7 +13,11 @@ public class CollectionIllust : MonoBehaviour
 
     private void Start()
 	{
-        _field = GameObject.Find("break_area").GetComponent<FieldManager>();
+        GameObject temp = GameObject.Find("break_area");
+		if (temp!=null)
+        {
+            _field = temp.GetComponent<FieldManager>();
+        }
         illustPosition = GetComponent<RectTransform>();
         pos = illustPosition.transform.position;
 	}
