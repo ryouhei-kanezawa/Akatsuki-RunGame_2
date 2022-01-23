@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Murosta.Utility;
 using DG.Tweening;
 using TMPro;
 
@@ -34,6 +35,7 @@ public class ScoreManager : MonoBehaviour
         coin.text = CoinScore.ToString();
         kyori.text = KyoriScore.ToString();
         plusCoin.text = "+" + addCoin;
+        plusCoin.color = new Color(plusCoin.color.r, plusCoin.color.g, plusCoin.color.b,0f);
     }
 
 	private void Update()
@@ -49,12 +51,33 @@ public class ScoreManager : MonoBehaviour
         kyori.text = KyoriScore.ToString();
 	}
 
+    private IEnumerator FadeText()
+	{
+        CanvasGrouopExtensions.FadeIn(plusCoin, 1.0f);
+
+        var i = 0;
+        while (i < 60)
+        {
+            i++;
+            yield return null;
+        }
+
+        CanvasGrouopExtensions.FadeOut(plusCoin, 1.0f);
+        i = 0;
+        while (i < 60)
+        {
+            i++;
+            yield return null;
+        }
+        yield break;
+    }
     public void CoinUpdate()
 	{
         CoinScore++;
 
         coin.text = CoinScore.ToString();
         KyoriScore += addCoin;
+        StartCoroutine(FadeText());
     }
 
     public void StopSwich(bool set)
