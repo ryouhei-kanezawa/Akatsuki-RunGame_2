@@ -18,11 +18,13 @@ public class GameOver : MonoBehaviour
     private TextMeshProUGUI coin;
     private Transform canvasTran;
     private HomeScore home = new HomeScore();
+    private GameUpdate swich = new GameUpdate();
 
 	public void Overset()
     {
+        swich.SetGameSwich(false);
+        swich.SetBackSwich(true);
 
-        _score.StopSwich(false);
         GameObject game = Instantiate(over, canvasTran, false);
         game.transform.SetParent(canvas.transform, false);
 
@@ -34,7 +36,5 @@ public class GameOver : MonoBehaviour
 
         home.SetScore(_score.KyoriScore);
         sound.StopSound();
-
-        Time.timeScale = 0;
     }
 }

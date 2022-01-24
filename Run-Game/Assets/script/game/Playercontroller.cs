@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Playercontroller : MonoBehaviour
 {
     [SerializeField]
     private GameObject player_body;
+    [SerializeField]
+    private GameObject effect1;
+    [SerializeField]
+    private GameObject coinEffect1;
     [SerializeField]
     private float junmp = 5.0f;
     [SerializeField]
@@ -14,23 +19,23 @@ public class Playercontroller : MonoBehaviour
     private GameOver _orver;
     [SerializeField]
     private PlaySound sound;
-    [SerializeField]
-    private TimeStart Stop;
 
+    private GameUpdate swich = new GameUpdate();
     private CollectionGallery _gallery = new CollectionGallery();
     private CollectionIllust _illust;
+    private RectTransform playerTransform;
     private Rigidbody2D player_jump;
     private int jumpCount;
 
     void Start()
     {
         player_jump = player_body.GetComponent<Rigidbody2D>();
+        playerTransform = player_body.GetComponent<RectTransform>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-		if (Stop.StopMoment())
+		if (swich.GetGameSwich())
 		{
 			if (jumpCount>=2)
 			{
@@ -49,6 +54,10 @@ public class Playercontroller : MonoBehaviour
     private void Jump_getkey()
 	{
         player_jump.velocity = Vector2.up * junmp;
+        var effectTransform = new Vector3(playerTransform.transform.position.x
+            , playerTransform.transform.position.y - playerTransform.sizeDelta.y / 2
+            , playerTransform.transform.position.z);
+        StartCoroutine(PlayEffect(effect1, effectTransform));
         sound.PlayJumpEffect();
 	}
 
@@ -57,6 +66,10 @@ public class Playercontroller : MonoBehaviour
         if (collision.gameObject.CompareTag("coin"))
         {
             _score.CoinUpdate();
+
+            var effectTransform = collision.gameObject.transform;
+            StartCoroutine(PlayEffect(coinEffect1, effectTransform.localPosition));
+
             sound.PlayCoinEffect();
             Destroy(collision.gameObject);
         }
@@ -64,7 +77,6 @@ public class Playercontroller : MonoBehaviour
 		if (collision.gameObject.GetComponent<CollectionIllust>())
 		{
             _illust = collision.gameObject.GetComponent<CollectionIllust>();
-            Debug.Log(_illust.SendEnum());
             _gallery.OpenIllust(_illust.SendEnum());
             Destroy(collision.gameObject);
         }
@@ -79,8 +91,27 @@ public class Playercontroller : MonoBehaviour
 
 		if (collision.gameObject.CompareTag("gameorver"))
         {
-            sound.PlayHitEffect();
-            _orver.Overset();
+			if (swich.GetGameSwich())
+            {
+                sound.PlayHitEffect();
+                playerTransform.transform.DORotate(new Vector3(0, 0, 90), 0.5f);
+                _orver.Overset();
+            }
         }
+    }
+
+    private IEnumerator PlayEffect( GameObject effect,Vector3 position)
+    {
+        Quaternion q = effect.transform.rotation;
+        var tmp = Instantiate(effect, position, q);
+
+        var i = 0;
+        while (i < 60)
+        {
+            i++;
+            yield return null;
+        }
+
+        Destroy(tmp);
     }
 }

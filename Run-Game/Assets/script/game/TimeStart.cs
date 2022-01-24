@@ -7,24 +7,19 @@ public class TimeStart : MonoBehaviour
     [SerializeField]
     private PlayBGM sound;
 
-    private bool active;
+    private GameUpdate swich = new GameUpdate();
 
 	private void Start()
 	{
-        active = false;
-        Time.timeScale = 1;
-	}
-
-	public bool StopMoment()
-	{
-        return active;
+        swich.SetGameSwich(false);
+        swich.SetBackSwich(false);
 	}
 
     public void StopLine()
     {
-        if(!active)
+        if(!swich.GetGameSwich())
         {
-            active = true;
+            swich.SetGameSwich(true);
             sound.PlaySoundBGM();
         }
     }

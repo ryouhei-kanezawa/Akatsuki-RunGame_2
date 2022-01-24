@@ -5,6 +5,7 @@ using UnityEngine;
 public class MoveBoad : MonoBehaviour
 {
     private Vector3 pos = new Vector3();
+    private GameUpdate swich = new GameUpdate();
     private RectTransform boadPosition;
     private FieldManager field;
 
@@ -17,7 +18,7 @@ public class MoveBoad : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale!=0)
+        if (!swich.GetBackSwich())
         {
             pos.x -= field.Speed * Time.deltaTime;
 

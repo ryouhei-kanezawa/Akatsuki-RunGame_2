@@ -8,6 +8,7 @@ public class CollectionIllust : MonoBehaviour
     private distinction dis_Illust;
 
     private Vector3 pos = new Vector3();
+    private GameUpdate swich = new GameUpdate();
     private RectTransform illustPosition;
     private FieldManager _field;
 
@@ -24,7 +25,7 @@ public class CollectionIllust : MonoBehaviour
 
 	private void Update()
     {
-		if (Time.timeScale!=0)
+		if (swich.GetGameSwich())
 		{
             pos.x -= _field.Speed * Time.deltaTime;
             illustPosition.transform.position = pos;

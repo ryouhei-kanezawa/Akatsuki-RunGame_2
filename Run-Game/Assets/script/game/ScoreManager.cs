@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Murosta.Utility;
-using DG.Tweening;
 using TMPro;
 
 public class ScoreManager : MonoBehaviour
@@ -18,10 +17,8 @@ public class ScoreManager : MonoBehaviour
     private int score = 10;
     [SerializeField]
     private int addCoin = 1000;
-    [SerializeField]
-    private TimeStart Stop;
 
-    private bool swich = true;
+    private GameUpdate swich = new GameUpdate();
 
 	public int CoinScore { get; private set; }
 
@@ -40,16 +37,22 @@ public class ScoreManager : MonoBehaviour
 
 	private void Update()
 	{
-        if (Stop.StopMoment())
+        if (swich.GetGameSwich())
         {
-			if (swich)
-			{
-                KyoriScore += score;
-			}
+            KyoriScore += score;
         }
 
         kyori.text = KyoriScore.ToString();
-	}
+    }
+
+    public void CoinUpdate()
+    {
+        CoinScore++;
+
+        coin.text = CoinScore.ToString();
+        KyoriScore += addCoin;
+        StartCoroutine(FadeText());
+    }
 
     private IEnumerator FadeText()
 	{
@@ -71,17 +74,4 @@ public class ScoreManager : MonoBehaviour
         }
         yield break;
     }
-    public void CoinUpdate()
-	{
-        CoinScore++;
-
-        coin.text = CoinScore.ToString();
-        KyoriScore += addCoin;
-        StartCoroutine(FadeText());
-    }
-
-    public void StopSwich(bool set)
-	{
-        swich = set;
-	}
 }

@@ -13,6 +13,7 @@ public class PaseUI : MonoBehaviour
     private PlayBGM sound;
 
     private bool check = true;
+    private GameUpdate swich = new GameUpdate();
 
     void Awake()
     {
@@ -21,22 +22,25 @@ public class PaseUI : MonoBehaviour
 
     void PauseSW()
     {
-            if (check)
-            {
-                sound.PlayButton();
-                sound.PoseSoundBGM(check);
-                Time.timeScale = 0;
-                check = false;
-                _score.StopSwich(false);
-            }
-            else
-            {
-                sound.PlayButton();
-                sound.PoseSoundBGM(check);
+        if (swich.GetGameSwich())
+        {
+            sound.PlayButton();
+            sound.PoseSoundBGM(check);
+            swich.SetGameSwich(false);
+            swich.SetBackSwich(true);
+            Time.timeScale = 0;
 
-                Time.timeScale = 1.0f;
-                check = true;
-                _score.StopSwich(true);
-            }
+            check = false;
+        }
+        else
+        {
+            sound.PlayButton();
+            sound.PoseSoundBGM(check);
+            swich.SetGameSwich(true);
+            swich.SetBackSwich(false);
+            Time.timeScale = 1;
+
+            check = true;
+        }
     }
 }

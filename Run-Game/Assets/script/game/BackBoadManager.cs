@@ -9,6 +9,7 @@ public class BackBoadManager : MonoBehaviour
 
     private int maxPosition = -18;
     private Vector3 posGround = new Vector3();
+    private GameUpdate swich = new GameUpdate();
     private RectTransform rectGround;
 
 	private void Start()
@@ -19,7 +20,7 @@ public class BackBoadManager : MonoBehaviour
 
 	void Update()
     {
-		if (Time.timeScale==0)
+		if (swich.GetBackSwich())
 		{
             posGround.x -= 0;
             rectGround.transform.position = posGround;

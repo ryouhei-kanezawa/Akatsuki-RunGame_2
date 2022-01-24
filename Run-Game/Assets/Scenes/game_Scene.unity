@@ -689,9 +689,10 @@ GameObject:
   m_Component:
   - component: {fileID: 385390081}
   - component: {fileID: 385390080}
-  - component: {fileID: 385390079}
   - component: {fileID: 385390078}
   - component: {fileID: 385390082}
+  - component: {fileID: 385390079}
+  - component: {fileID: 385390084}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -733,16 +734,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.45, y: 0}
+  m_Offset: {x: 0.5, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 5.89, y: 7.98}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 2, y: 3}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 1
     adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_AutoTiling: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 8}
   m_EdgeRadius: 0
@@ -790,27 +791,32 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_DrawMode: 1
+  m_Size: {x: 2, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &385390081
-Transform:
+--- !u!224 &385390081
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385390077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.06, y: -1.38, z: 0}
-  m_LocalScale: {x: 0.388, y: 0.388, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -5.77, y: -1.39}
+  m_SizeDelta: {x: 2, y: 3}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &385390082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,11 +830,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_body: {fileID: 385390077}
+  effect1: {fileID: 180820, guid: a07608802ac497743a7f19f6633fdd70, type: 3}
+  coinEffect1: {fileID: 157776, guid: 82bf03917e16d3d4cad30518cca28308, type: 3}
   junmp: 10
   _score: {fileID: 1359310021}
   _orver: {fileID: 1206416322}
   sound: {fileID: 70320294}
-  Stop: {fileID: 1840343984}
+--- !u!222 &385390084
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385390077}
+  m_CullTransparentMesh: 1
 --- !u!1 &647625967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,7 +2121,6 @@ MonoBehaviour:
   plusCoin: {fileID: 144710194}
   score: 10
   addCoin: 1000
-  Stop: {fileID: 1840343984}
 --- !u!1 &1431092884
 GameObject:
   m_ObjectHideFlags: 0
@@ -3267,5 +3281,4 @@ MonoBehaviour:
   positionSlopeTop: {fileID: 1188111359}
   positionCoin: {fileID: 1588431606}
   positionIllust: {fileID: 1301354412}
-  Stop: {fileID: 1840343984}
   score: {fileID: 1359310021}

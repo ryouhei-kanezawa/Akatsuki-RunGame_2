@@ -32,10 +32,9 @@ public class FieldManager : MonoBehaviour
     [SerializeField]
     private GameObject positionIllust;
     [SerializeField]
-    private TimeStart Stop;
-    [SerializeField]
     private ScoreManager score;
 
+    private GameUpdate swich = new GameUpdate();
     private static float speed;
     private float nextSpawnTime = 0;
     private Vector3 coinPos;
@@ -72,7 +71,7 @@ public class FieldManager : MonoBehaviour
             nextSpawnTime = Time.timeSinceLevelLoad + interval;
             LocalInstantate();
         }
-		if (Stop.StopMoment())
+		if (swich.GetGameSwich())
         {
             if ((float)score.KyoriScore % scoreSpeed <= 0.001f)
             {
@@ -111,7 +110,7 @@ public class FieldManager : MonoBehaviour
             Instantiate(field[Rnum]);
 		}
 
-		if (Stop.StopMoment())
+		if (swich.GetGameSwich())
 		{
             int Cnum;
 
