@@ -35,7 +35,7 @@ public class Playercontroller : MonoBehaviour
 
     void Update()
     {
-		if (swich.GetGameSwich())
+        if (swich.GetGameSwich())
 		{
 			if (jumpCount>=2)
 			{
@@ -44,14 +44,12 @@ public class Playercontroller : MonoBehaviour
 
             if (Input.GetKeyDown("space"))
             {
-                Jump_getkey();
-                jumpCount++;
+                Getkey();
             }
-        }
-		
+		}
     }
 
-    private void Jump_getkey()
+    private void Getkey()
 	{
         player_jump.velocity = Vector2.up * junmp;
         var effectTransform = new Vector3(playerTransform.transform.position.x
@@ -59,7 +57,8 @@ public class Playercontroller : MonoBehaviour
             , playerTransform.transform.position.z);
         StartCoroutine(PlayEffect(effect1, effectTransform));
         sound.PlayJumpEffect();
-	}
+        jumpCount++;
+    }
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
@@ -94,7 +93,10 @@ public class Playercontroller : MonoBehaviour
 			if (swich.GetGameSwich())
             {
                 sound.PlayHitEffect();
-                playerTransform.transform.DORotate(new Vector3(0, 0, 90), 0.5f);
+                playerTransform.transform.DORotate(new Vector3(0, 0, 90), 1f);
+                swich.SetGameSwich(false);
+                swich.SetBackSwich(true);
+
                 _orver.Overset();
             }
         }

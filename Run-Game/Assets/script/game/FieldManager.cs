@@ -66,14 +66,18 @@ public class FieldManager : MonoBehaviour
 
 	void Update()
     {
-        if (nextSpawnTime < Time.timeSinceLevelLoad)
+		if (!swich.GetBackSwich())
         {
-            nextSpawnTime = Time.timeSinceLevelLoad + interval;
-            LocalInstantate();
+            if (nextSpawnTime < Time.timeSinceLevelLoad)
+            {
+                nextSpawnTime = Time.timeSinceLevelLoad + interval;
+                LocalInstantate();
+            }
         }
+
 		if (swich.GetGameSwich())
         {
-            if ((float)score.KyoriScore % scoreSpeed <= 0.001f)
+            if ((float)score.Tmp % scoreSpeed <= 0.001f)
             {
                 speed += acceleration * Time.deltaTime;
             }
@@ -96,19 +100,22 @@ public class FieldManager : MonoBehaviour
     private void LocalInstantate()
     {
         var fieldPar = Random.Range(0, 100);
-        bool fieldBool;
+        bool fieldBool = false;
 
-		if (fieldPar>=fieldNum)
-		{
-            fieldBool = true;
-            Instantiate(slope);
-		}
-		else
-		{
-            fieldBool = false;
-            int Rnum = Random.Range(0, field.Length);
-            Instantiate(field[Rnum]);
-		}
+		if (!swich.GetBackSwich())
+        {
+            if (fieldPar >= fieldNum)
+            {
+                fieldBool = true;
+                Instantiate(slope);
+            }
+            else
+            {
+                fieldBool = false;
+                int Rnum = Random.Range(0, field.Length);
+                Instantiate(field[Rnum]);
+            }
+        }
 
 		if (swich.GetGameSwich())
 		{
@@ -147,7 +154,7 @@ public class FieldManager : MonoBehaviour
 						}
 						else
                         {
-                            Instantiate(item[Cnum], stonePos, Quaternion.identity);
+                            Instantiate(instantObject, stonePos, Quaternion.identity);
                         }
                     }
                     break;

@@ -1,40 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 using TMPro;
 
 public class GameOver : MonoBehaviour
 {
     [SerializeField]
-    private GameObject over;            //Instantiate‚·‚éobject
+    private Result over;
     [SerializeField]
     private ScoreManager _score;
     [SerializeField]
-    private GameObject canvas;          //Instantiate‚·‚éCanvas
+    private GameObject canvas;
     [SerializeField]
     private PlayBGM sound;
 
-    private TextMeshProUGUI score;
-    private TextMeshProUGUI coin;
+    private Result game = null;
     private Transform canvasTran;
     private HomeScore home = new HomeScore();
-    private GameUpdate swich = new GameUpdate();
 
 	public void Overset()
     {
-        swich.SetGameSwich(false);
-        swich.SetBackSwich(true);
+		if (game == null)
+        {
+            sound.StopSound();
 
-        GameObject game = Instantiate(over, canvasTran, false);
-        game.transform.SetParent(canvas.transform, false);
+            game = Instantiate(over, canvasTran, false);
+            game.transform.SetParent(canvas.transform, false);
 
-        coin = game.transform.Find("coinText").GetComponent<TextMeshProUGUI>();
-        score = game.transform.Find("scoreText").GetComponent<TextMeshProUGUI>();
-
-        coin.text = "coin:" + _score.CoinScore;
-        score.text = "score:" + _score.KyoriScore;
-
-        home.SetScore(_score.KyoriScore);
-        sound.StopSound();
+            game.SetText(home.GetKyori, home.GetCoin, _score.Tmp);
+            home.SetScore(_score.Tmp);
+        }
     }
 }

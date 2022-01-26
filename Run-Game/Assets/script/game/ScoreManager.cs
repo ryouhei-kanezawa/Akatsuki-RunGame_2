@@ -14,23 +14,23 @@ public class ScoreManager : MonoBehaviour
     [SerializeField]
     private Text plusCoin;
     [SerializeField]
-    private int score = 10;
+    private int addscore = 10;
     [SerializeField]
     private int addCoin = 1000;
 
     private GameUpdate swich = new GameUpdate();
+    private HomeScore score = new HomeScore();
 
-	public int CoinScore { get; private set; }
-
-	public int KyoriScore { get; private set; }
+	public int Tmp { get; private set; }
 
 	void Start()
     {
-        CoinScore = 0;
-        KyoriScore = 0;
+        score.GetCoin = 0;
+        score.GetKyori = 0;
+        Tmp = 0;
 
-        coin.text = CoinScore.ToString();
-        kyori.text = KyoriScore.ToString();
+        coin.text = score.GetCoin.ToString();
+        kyori.text = score.GetCoin.ToString();
         plusCoin.text = "+" + addCoin;
         plusCoin.color = new Color(plusCoin.color.r, plusCoin.color.g, plusCoin.color.b,0f);
     }
@@ -39,23 +39,26 @@ public class ScoreManager : MonoBehaviour
 	{
         if (swich.GetGameSwich())
         {
-            KyoriScore += score;
+            score.GetKyori += addscore;
+            Tmp += addscore;
         }
 
-        kyori.text = KyoriScore.ToString();
+        kyori.text = score.GetKyori.ToString();
     }
 
     public void CoinUpdate()
     {
-        CoinScore++;
+        score.GetCoin++;
 
-        coin.text = CoinScore.ToString();
-        KyoriScore += addCoin;
+        coin.text = score.GetCoin.ToString();
+        Tmp += addCoin;
+
         StartCoroutine(FadeText());
     }
 
     private IEnumerator FadeText()
 	{
+        plusCoin.gameObject.SetActive(true);
         CanvasGrouopExtensions.FadeIn(plusCoin, 1.0f);
 
         var i = 0;
@@ -72,6 +75,7 @@ public class ScoreManager : MonoBehaviour
             i++;
             yield return null;
         }
+        plusCoin.gameObject.SetActive(false);
         yield break;
     }
 }
