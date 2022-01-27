@@ -30,6 +30,8 @@ public class GameOver : MonoBehaviour
             game.transform.SetParent(canvas.transform, false);
 
             game.SetText(home.GetKyori, home.GetCoin, _score.Tmp);
+
+            home.SetMaxScore(_score.Tmp);
             home.SetScore(_score.Tmp);
         }
     }

@@ -2,6 +2,7 @@
 public class HomeScore
 {
 	public static int scoreBox = -1;
+	public static int maxScore = 0;
 	public static int coin = 0;
 	public static int kyori = 0;
 
@@ -29,6 +30,19 @@ public class HomeScore
 		{
 			return kyori;
 		}
+	}
+
+	public void SetMaxScore(int tmp)
+	{
+		if (maxScore < tmp)
+		{
+			maxScore = tmp;
+		}
+	}
+
+	public int GetMaxScore()
+	{
+		return maxScore;
 	}
 
 	public void SetScore(int temp)

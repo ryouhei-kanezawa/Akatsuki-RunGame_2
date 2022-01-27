@@ -12,6 +12,8 @@ public class PlaySound : MonoBehaviour
 	private AudioClip hitEffect;
 	[SerializeField]
 	private AudioClip coinEffect;
+	[SerializeField]
+	private AudioClip voiceEffect;
 
 	private new AudioSource audio;
 
@@ -41,5 +43,10 @@ public class PlaySound : MonoBehaviour
 	public void PlayCoinEffect()
 	{
 		audio.PlayOneShot(coinEffect);
+	}
+
+	public void PlayVoiceEffect()
+	{
+		audio.PlayOneShot(voiceEffect);
 	}
 }

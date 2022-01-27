@@ -77,6 +77,8 @@ public class Playercontroller : MonoBehaviour
 		{
             _illust = collision.gameObject.GetComponent<CollectionIllust>();
             _gallery.OpenIllust(_illust.SendEnum());
+
+            sound.PlayVoiceEffect();
             Destroy(collision.gameObject);
         }
 	}

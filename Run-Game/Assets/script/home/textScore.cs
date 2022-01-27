@@ -10,19 +10,20 @@ public class textScore : MonoBehaviour
 	[SerializeField]
 	private Text lastScoreText;
 
-	private static int bestScore = 0;
+	private static int bestScore;
 	private int lastScore;
 	private HomeScore score = new HomeScore();
 
 	private void Start()
 	{
 		int scoreTemp = score.GetScore();
+		int maxScore = score.GetMaxScore();
 
 		if (scoreTemp>0)
 		{
-			if (scoreTemp > bestScore)
+			if (maxScore > bestScore)
 			{
-				bestScore = scoreTemp;
+				bestScore = maxScore;
 				bestScoreText.text = bestScore.ToString();
 			}
 			else
@@ -36,7 +37,8 @@ public class textScore : MonoBehaviour
 		else
 		{
 			lastScore = 0;
-			bestScoreText.text = "„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ„Ÿ";
+			bestScore = 0;
+			bestScoreText.text = bestScore.ToString();
 			lastScoreText.text = lastScore.ToString();
 		}
 	}

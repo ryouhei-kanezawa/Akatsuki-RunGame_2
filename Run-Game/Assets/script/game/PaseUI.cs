@@ -6,9 +6,7 @@ using UnityEngine.UI;
 public class PaseUI : MonoBehaviour
 {
     [SerializeField]
-    private Button Pause;               //ポーズ画面を呼び出すボタン
-    [SerializeField]
-    private ScoreManager _score;
+    private Button Pause;
     [SerializeField]
     private PlayBGM sound;
 
@@ -22,25 +20,28 @@ public class PaseUI : MonoBehaviour
 
     void PauseSW()
     {
-        if (swich.GetGameSwich())
-        {
-            sound.PlayButton();
-            sound.PoseSoundBGM(check);
-            swich.SetGameSwich(false);
-            swich.SetBackSwich(true);
-            Time.timeScale = 0;
+		if (!swich.GetBackSwich())
+		{
+            if (swich.GetGameSwich())
+            {
+                sound.PlayButton();
+                sound.PoseSoundBGM(check);
+                swich.SetGameSwich(false);
+                swich.SetBackSwich(true);
+                Time.timeScale = 0;
 
-            check = false;
-        }
-        else
-        {
-            sound.PlayButton();
-            sound.PoseSoundBGM(check);
-            swich.SetGameSwich(true);
-            swich.SetBackSwich(false);
-            Time.timeScale = 1;
+                check = false;
+            }
+            else
+            {
+                sound.PlayButton();
+                sound.PoseSoundBGM(check);
+                swich.SetGameSwich(true);
+                swich.SetBackSwich(false);
+                Time.timeScale = 1;
 
-            check = true;
+                check = true;
+            }
         }
     }
 }

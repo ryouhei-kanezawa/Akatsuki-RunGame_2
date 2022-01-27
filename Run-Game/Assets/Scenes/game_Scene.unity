@@ -306,6 +306,7 @@ MonoBehaviour:
   jumpEffect2: {fileID: 8300000, guid: ecfb464b5298e9e4a8fec6dc21fed2cd, type: 3}
   hitEffect: {fileID: 8300000, guid: 01bea25ce2bff6142b02769509bf7de9, type: 3}
   coinEffect: {fileID: 8300000, guid: 62e9415427223324c87c4a2bd1f29cfc, type: 3}
+  voiceEffect: {fileID: 8300000, guid: 122884087b5948e4c8257b9a84903299, type: 3}
 --- !u!82 &70320295
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1105,7 +1106,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Pause: {fileID: 684658674}
-  _score: {fileID: 1359310021}
   sound: {fileID: 2014822239}
 --- !u!114 &684658674
 MonoBehaviour:
@@ -3293,7 +3293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   field:
   - {fileID: 6744180126304427106, guid: 013fc5f8454610f4ea0b7f5206b59240, type: 3}
-  - {fileID: 2762525127447874872, guid: 5bc187f86406f4846a879effbae981e1, type: 3}
   slope: {fileID: 3819609238444563200, guid: 8a3615d04d2536340bd7596d0f6fa155, type: 3}
   item:
   - {fileID: 8854207088788451396, guid: 3370952e4c7416241881f2e1ea9a5294, type: 3}
@@ -3351,10 +3350,13 @@ MonoBehaviour:
   - {fileID: 1571419247394632797, guid: 04232e62dc78715458a7c446b71552a9, type: 3}
   - {fileID: 2941519265941870848, guid: eedb6bde30b9b2f4c93235f659345915, type: 3}
   - {fileID: 3237100650291966357, guid: fbb8f60deab0d2c4f85ae7b99628ac07, type: 3}
-  interval: 2.3
+  interval: 2
+  maxInterval: 0.2
   fieldNum: 80
   localSpeed: 5
-  scoreSpeed: 1000
+  maxSpeed: 30
+  plusScore: 1000
+  maxScore: 20000
   acceleration: 6
   positionStone: {fileID: 826413739}
   positionSlopeTop: {fileID: 1188111359}

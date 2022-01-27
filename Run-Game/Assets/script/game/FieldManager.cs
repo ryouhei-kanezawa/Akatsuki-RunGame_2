@@ -16,13 +16,19 @@ public class FieldManager : MonoBehaviour
     [SerializeField]
     private float interval = 2f;
     [SerializeField]
+    private float maxInterval = 0.2f;
+    [SerializeField]
     private int fieldNum = 20;
     [SerializeField]
-    private float localSpeed = 0.05f;
+    private float localSpeed = 5f;
     [SerializeField]
-    private float scoreSpeed = 100f;
+    private float maxSpeed = 30f;
     [SerializeField]
-    private float acceleration = 0.015f;
+    private float plusScore = 1000f;
+    [SerializeField]
+    private float maxScore = 20000f;
+    [SerializeField]
+    private float acceleration = 6f;
     [SerializeField]
     private GameObject positionStone;
     [SerializeField]
@@ -36,7 +42,8 @@ public class FieldManager : MonoBehaviour
 
     private GameUpdate swich = new GameUpdate();
     private static float speed;
-    private float nextSpawnTime = 0;
+    private float localIntarval;
+    private float time;
     private Vector3 coinPos;
     private Vector3 slopePosTop;
     private Vector3 illustPos;
@@ -57,6 +64,8 @@ public class FieldManager : MonoBehaviour
 
     private void Start()
 	{
+        time = interval;
+        localIntarval = interval;
         stonePos = positionStone.transform.position;
         slopePosTop = positionSlopeTop.transform.position;
         coinPos = positionCoin.transform.position;
@@ -68,21 +77,36 @@ public class FieldManager : MonoBehaviour
     {
 		if (!swich.GetBackSwich())
         {
-            if (nextSpawnTime < Time.timeSinceLevelLoad)
+            time += Time.deltaTime;
+            if (interval <= time)
             {
-                nextSpawnTime = Time.timeSinceLevelLoad + interval;
+                time = 0f;
                 LocalInstantate();
             }
         }
 
 		if (swich.GetGameSwich())
         {
-            if ((float)score.Tmp % scoreSpeed <= 0.001f)
-            {
-                speed += acceleration * Time.deltaTime;
-            }
+            Ascent();
         }
     }
+
+    private void Ascent()
+	{
+		if (score.Tmp > maxScore)
+		{
+            return;
+		}
+
+        speed += (maxSpeed - acceleration) / maxScore;
+
+		if (interval <= maxInterval)
+		{
+            return;
+		}
+
+        interval -= (interval - maxInterval) / maxScore;
+	}
 
     public float Speed
 	{

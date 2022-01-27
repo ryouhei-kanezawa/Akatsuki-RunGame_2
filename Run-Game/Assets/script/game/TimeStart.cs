@@ -13,6 +13,7 @@ public class TimeStart : MonoBehaviour
     private Image spaceKey;
 
     private GameUpdate swich = new GameUpdate();
+    private bool updateStop;
 
 	private void Start()
 	{
@@ -20,14 +21,17 @@ public class TimeStart : MonoBehaviour
         swich.SetGameSwich(false);
         swich.SetBackSwich(true);
         FaidSpaceKey();
+
+        updateStop = true;
 	}
 
 	private void Update()
 	{
-		if (swich.GetBackSwich())
+		if (updateStop)
 		{
             if (Input.GetKeyDown("space"))
             {
+                updateStop = false;
                 spaceKey.gameObject.SetActive(false);
                 swich.SetBackSwich(false);
                 line.Play();
