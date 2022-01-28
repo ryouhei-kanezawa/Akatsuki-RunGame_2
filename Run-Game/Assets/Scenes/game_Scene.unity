@@ -3449,6 +3449,7 @@ MonoBehaviour:
   item:
   - {fileID: 8854207088788451396, guid: 3370952e4c7416241881f2e1ea9a5294, type: 3}
   - {fileID: 3873742856078635637, guid: 1fee8a5cc265aba49981dc12470122f2, type: 3}
+  enemy:
   - {fileID: 4394831998944701986, guid: fe8312d133397c643ac64acda4d3889f, type: 3}
   - {fileID: 949852291956577412, guid: f7864da8a4141b74d9896928721f166b, type: 3}
   illust:
@@ -3502,12 +3503,13 @@ MonoBehaviour:
   - {fileID: 1571419247394632797, guid: 04232e62dc78715458a7c446b71552a9, type: 3}
   - {fileID: 2941519265941870848, guid: eedb6bde30b9b2f4c93235f659345915, type: 3}
   - {fileID: 3237100650291966357, guid: fbb8f60deab0d2c4f85ae7b99628ac07, type: 3}
-  interval: 2
-  maxInterval: 1.3
   fieldNum: 80
+  enemyNum: 65
+  interval: 2
+  maxInterval: 1
   localSpeed: 5
-  maxSpeed: 30
-  maxScore: 20000
+  maxSpeed: 50
+  maxScore: 70000
   positionStone: {fileID: 826413739}
   positionSlopeTop: {fileID: 1188111359}
   positionCoin: {fileID: 1588431606}

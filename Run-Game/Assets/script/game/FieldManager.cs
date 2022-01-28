@@ -12,13 +12,17 @@ public class FieldManager : MonoBehaviour
     [SerializeField]
     private GameObject[] item;
     [SerializeField]
+    private GameObject[] enemy;
+    [SerializeField]
     private GameObject[] illust;
+    [SerializeField]
+    private int fieldNum = 20;
+    [SerializeField]
+    private int enemyNum = 20;
     [SerializeField]
     private float interval = 2f;
     [SerializeField]
     private float maxInterval = 0.2f;
-    [SerializeField]
-    private int fieldNum = 20;
     [SerializeField]
     private float localSpeed = 5f;
     [SerializeField]
@@ -95,7 +99,7 @@ public class FieldManager : MonoBehaviour
             return;
         }
 
-        interval -= (localIntarval + maxInterval) / maxScore;
+        interval -= (localIntarval + maxInterval) / (maxScore - score.Tmp);
 
         if (score.Tmp > maxScore)
 		{
@@ -161,21 +165,34 @@ public class FieldManager : MonoBehaviour
                     break;
 
                 case false: //通常・穴付き
-                    Cnum = Random.Range(0, item.Length);
-                    if (Cnum == 0)
+                    var enemyPar = Random.Range(0, 100);
+
+                    if (enemyPar >= enemyNum)
                     {
-                        CreateIllust(illustPos);
+                        var num = Random.Range(0, 100);
+                        var Enum = 80;
+						if (num<=Enum)
+						{
+                            var instantObject = enemy[0];//石
+                            Instantiate(instantObject, stonePos, Quaternion.identity);
+						}
+						else
+						{
+                            var instantObject = enemy[1];//おじさん
+                            Instantiate(instantObject, stonePos, Quaternion.identity);
+                        }
                     }
                     else
                     {
-                        var instantObject = item[Cnum];
-                        if (instantObject.CompareTag("coin"))
+                        Cnum = Random.Range(0, item.Length);
+						if (Cnum==0)
                         {
-                            Instantiate(instantObject, coinPos, Quaternion.identity);
+                            CreateIllust(illustPos);
 						}
 						else
                         {
-                            Instantiate(instantObject, stonePos, Quaternion.identity);
+                            var instantObject = item[Cnum];
+                            Instantiate(instantObject, coinPos, Quaternion.identity);
                         }
                     }
                     break;

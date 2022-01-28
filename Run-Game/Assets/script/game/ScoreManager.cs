@@ -30,7 +30,7 @@ public class ScoreManager : MonoBehaviour
         Tmp = 0;
 
         coin.text = score.GetCoin.ToString();
-        kyori.text = score.GetCoin.ToString();
+        kyori.text = score.GetKyori.ToString();
         plusCoin.text = "+" + addCoin;
         plusCoin.color = new Color(plusCoin.color.r, plusCoin.color.g, plusCoin.color.b,0f);
     }
@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
             Tmp += addscore;
         }
 
-        kyori.text = score.GetKyori.ToString();
+        kyori.text = Tmp.ToString();
     }
 
     public void CoinUpdate()
