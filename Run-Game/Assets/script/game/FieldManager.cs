@@ -24,11 +24,7 @@ public class FieldManager : MonoBehaviour
     [SerializeField]
     private float maxSpeed = 30f;
     [SerializeField]
-    private float plusScore = 1000f;
-    [SerializeField]
     private float maxScore = 20000f;
-    [SerializeField]
-    private float acceleration = 6f;
     [SerializeField]
     private GameObject positionStone;
     [SerializeField]
@@ -92,20 +88,21 @@ public class FieldManager : MonoBehaviour
     }
 
     private void Ascent()
-	{
-		if (score.Tmp > maxScore)
+    {
+
+        if (interval <= maxInterval)
+        {
+            return;
+        }
+
+        interval -= (localIntarval + maxInterval) / maxScore;
+
+        if (score.Tmp > maxScore)
 		{
             return;
 		}
 
-        speed += (maxSpeed - acceleration) / maxScore;
-
-		if (interval <= maxInterval)
-		{
-            return;
-		}
-
-        interval -= (interval - maxInterval) / maxScore;
+        speed += (maxSpeed - localSpeed) / maxScore;
 	}
 
     public float Speed
